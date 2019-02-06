@@ -1,0 +1,157 @@
+user@ics-user:~/Desktop/project$ git status
+On branch master
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+user@ics-user:~/Desktop/project$ 
+user@ics-user:~/Desktop/project$ 
+user@ics-user:~/Desktop/project$ 
+user@ics-user:~/Desktop/project$ touch newfile.txt
+user@ics-user:~/Desktop/project$ echo 'LNE' >> newfile.txt
+user@ics-user:~/Desktop/project$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	newfile.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+user@ics-user:~/Desktop/project$ git add -A
+user@ics-user:~/Desktop/project$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	new file:   newfile.txt
+
+user@ics-user:~/Desktop/project$ git commit -m "First commit"
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'user@ics-user.(none)')
+user@ics-user:~/Desktop/project$ git config user.email "laenicoledo@gmail.com"
+user@ics-user:~/Desktop/project$ git config user.name "Lae Nicole Evangelista"
+user@ics-user:~/Desktop/project$ git commit -m "First commit"
+[master (root-commit) e3d4ef1] First commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 newfile.txt
+user@ics-user:~/Desktop/project$ git status
+On branch master
+nothing to commit, working tree clean
+
+user@ics-user:~/Desktop/project$ git branch
+* master
+user@ics-user:~/Desktop/project$ git branch newfeature
+user@ics-user:~/Desktop/project$ git branch
+* master
+  newfeature
+user@ics-user:~/Desktop/project$ git checkout new-feature
+error: pathspec 'new-feature' did not match any file(s) known to git.
+user@ics-user:~/Desktop/project$ git checkout newfeature
+Switched to branch 'newfeature'
+user@ics-user:~/Desktop/project$ git add -A
+user@ics-user:~/Desktop/project$ git commit -m "Added notes"
+[newfeature 21fa014] Added notes
+ 2 files changed, 4 insertions(+)
+ create mode 100644 notes.txt
+user@ics-user:~/Desktop/project$ git status
+On branch newfeature
+nothing to commit, working tree clean
+user@ics-user:~/Desktop/project$ git checkout master
+Switched to branch 'master'
+user@ics-user:~/Desktop/project$ git status
+On branch master
+nothing to commit, working tree clean
+user@ics-user:~/Desktop/project$ git checkout newfeature
+Switched to branch 'newfeature'
+user@ics-user:~/Desktop/project$ git checkout master
+Switched to branch 'master'
+user@ics-user:~/Desktop/project$ git merge newfeature
+Updating e3d4ef1..21fa014
+Fast-forward
+ newfile.txt | 4 ++++
+ notes.txt   | 0
+ 2 files changed, 4 insertions(+)
+ create mode 100644 notes.txt
+
+user@ics-user:~/Desktop/project$ cd Desktop
+bash: cd: Desktop: No such file or directory
+user@ics-user:~/Desktop/project$ cd
+user@ics-user:~$ cd Desktop
+user@ics-user:~/Desktop$ git clone https://github.com/nicoleterego/cmsc100-uv-1L.git
+Cloning into 'cmsc100-uv-1L'...
+warning: You appear to have cloned an empty repository.
+user@ics-user:~/Desktop$ ls
+'[100] lab1examples.txt'   cmsc100-uv-1L   project
+user@ics-user:~/Desktop$ cd project
+user@ics-user:~/Desktop/project$ git remote add origin https://github.com/nicoleterego/cmsc100-uv-1L.git
+user@ics-user:~/Desktop/project$ git remote -v
+origin	https://github.com/nicoleterego/cmsc100-uv-1L.git (fetch)
+origin	https://github.com/nicoleterego/cmsc100-uv-1L.git (push)
+user@ics-user:~/Desktop/project$ git push origin master
+Username for 'https://github.com': nicoleterego
+Password for 'https://nicoleterego@github.com': 
+Counting objects: 7, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (7/7), 544 bytes | 544.00 KiB/s, done.
+Total 7 (delta 0), reused 0 (delta 0)
+To https://github.com/nicoleterego/cmsc100-uv-1L.git
+ * [new branch]      master -> master
+user@ics-user:~/Desktop/project$ git checkout newfeature
+Switched to branch 'newfeature'
+user@ics-user:~/Desktop/project$ git push origin newfeature
+\Username for 'https://github.com':nicoleterego
+Password for 'https://nicoleterego@github.com': 
+Total 0 (delta 0), reused 0 (delta 0)
+remote: 
+remote: Create a pull request for 'newfeature' on GitHub by visiting:
+remote:      https://github.com/nicoleterego/cmsc100-uv-1L/pull/new/newfeature
+remote: 
+To https://github.com/nicoleterego/cmsc100-uv-1L.git
+ * [new branch]      newfeature -> newfeature
+
+
+-----------------------------------------------------------------------------
+To do some changes to a file
+
+> git add -A # adds all changed files to index
+> git commit -m "message" # commits all files in an index
+> git push <remote> <branch>
+
+Branches
+
+> git branch #shows us available branches and active branch
+> git checkout <branch name> #switch to branch
+
+git checkout -b <new branchname>
+
+Merging of branch to master
+
+Source branch --> target branch
+
+Deleting git branch
+
+git branch -d newfeature
+
+Remote Repositories
+
+> git remote add origin # add the specified url as a remote repository and name it 'origin'
+
+> git push <remote> <branch> # push the local commit to the remote called origin, specifically, the master branch
+
